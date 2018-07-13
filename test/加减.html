@@ -1,0 +1,48 @@
+<!--//商品数量的增减及总价的变价
+//					$(function() {
+//						var t = $("#quantity");
+//						$("#max").click(function() {
+//							t.val(parseInt(t.val()) + 1);
+//							$("#min").removeAttr("disabled"); //当按加1时，解除$("#min")不可读状态  
+//							setTotal();
+//						})
+//						$("#min").click(function() {
+//							if(parseInt(t.val()) > 1) { //判断数量值大于1时才可以减少  
+//								t.val(parseInt(t.val()) - 1)
+//							} else {
+//								$("#min").attr("disabled", "disabled") //当$("#min")为1时，$("#min")不可读状态  
+//							}
+//							setTotal();
+//						})
+//
+//						function setTotal() {
+//							$("#total").html((parseInt(t.val()) * 12).toFixed(2));
+//						}
+//						setTotal();
+//					})-->
+	
+	
+	
+	$('table').append('<tr class="proTr"><td><input class="btnn" type="checkbox" /><img src="' + proImg + '" /></td><td>' + proInfor + '</td><td>' + proPrice + '</td><td>' + proNum + '</td><td >' + proAllPrice + '</td><td><button class="btn btn-danger btn-block delBtn" dataindex="' + i + '">删除</button></td></tr>');
+		}
+
+
+$.ajax({
+					type: "post",
+					url: "http://192.168.10.127/php/shoppingCar.php",
+					async: true,
+					data: {
+						kind: 'update'
+					},
+					success: function(res) {
+						var jsObj = JSON.parse(res);
+						if(jsObj.success == 'yes') {
+
+						} else {
+
+						}
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				});	
